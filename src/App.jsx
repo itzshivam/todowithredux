@@ -15,8 +15,8 @@ function App() {
       <div className="App">
         <h1>TODO List</h1>
         <AddTodo></AddTodo>
-        <TodoList todos={[{content: 'Task 1'}, {content: 'Task 2'}]}/>
-        <VisibilityFilter filters={filters}/>
+        <VisibilityFilter/>
+        <TodoList/>
       </div>
     </Provider>
   );

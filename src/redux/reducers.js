@@ -2,13 +2,9 @@ import {FILTER_ALL} from './actionTypes'
 import { ADD_TODO, TOGGLE_TODO, DELETE_TODO, SET_FILTER } from './actionTypes'
 
 const initialTodoState = {
-    nextId: 2,
+    nextId: 1,
     data:
     {
-        1: {
-            content: 'Content 1',
-            completed: false
-        }
     }
 }
 
