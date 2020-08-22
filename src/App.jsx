@@ -9,13 +9,12 @@ import store from './redux/store';
 import './App.css';
 
 function App() {
-  const filters = ['all', 'completed', 'incomplete']
   return (
     <Provider store={store}>
-      <div className="App">
-        <h1>TODO List</h1>
-        <AddTodo></AddTodo>
-        <VisibilityFilter/>
+      <div className = "App"> 
+        <h1 className = "header">TODO List</h1>
+          <AddTodo></AddTodo>
+          <VisibilityFilter/>
         <TodoList/>
       </div>
     </Provider>

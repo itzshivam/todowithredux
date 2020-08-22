@@ -10,7 +10,7 @@ class VisibilityFilter extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="align">
                 {Filters.map((filter, i) => (
                     <button
                         className={filter === this.props.activeFilter ? 'active' : ''}

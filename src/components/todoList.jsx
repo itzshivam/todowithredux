@@ -4,7 +4,9 @@ import { FILTER_ALL, FILTER_COMPLETED } from '../redux/actionTypes'
 import { toggleTodo } from '../redux/actions'
 
 const Todo = ({ todo, id, toggleTodo }) => (
-    <li className={todo.completed ? 'completed' : ''} onClick={() => toggleTodo(id)}>{todo.content}</li>
+    <li className={todo.completed ? 'completed' : ''} onClick={() => toggleTodo(id)}>
+            {todo.content}
+    </li>
 )
 
 class TodoList extends React.Component {
@@ -16,26 +18,30 @@ class TodoList extends React.Component {
         console.log(this.props.todos);
 
         return (
-            Object.keys(this.props.todos).map(key => 
-                  <Todo key={key} id={key} toggleTodo={this.props.toggleTodo} todo={this.props.todos[key]} />
-                )
+            <ul>
+                {
+                  Object.keys(this.props.todos).map(key =>
+                  <Todo key={key} id={key} toggleTodo={this.props.toggleTodo} todo={this.props.todos[key]} />)
+                }
+            </ul>
+            
         );
     }
 }
 
 const mapState = (state) => {
     if (state.visibilityFilter.activeFilter === FILTER_ALL) {
-        return { todos: state.todos.data }
+        return {
+            todos: state.todos.data
+            }
     } else if (state.visibilityFilter.activeFilter === FILTER_COMPLETED) {
-        return ({
-            todos: Object.keys(state.todos.data).filter(todo => todo.completed)
-        })
+        return {
+            todos: Object.fromEntries(Object.entries(state.todos.data).filter(([k,v]) => v.completed))
+        }
     } else {
-        var obj = Object.keys(state.todos.data);
-        console.log(Object.keys(state.todos.data));
-        return ({
-            todos: Object.keys(state.todos.data).filter(todo => !todo.completed)
-        })
+        return {
+            todos: Object.fromEntries(Object.entries(state.todos.data).filter(([k,v]) => !v.completed))
+        }
     }
 }
 

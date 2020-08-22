@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { addTodo } from '../redux/actions'
+import '../App.css'
 
 class AddTodo extends React.Component {
 
@@ -20,10 +21,10 @@ class AddTodo extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className ="align">
                 <input type="text" onChange={e => this.handleOnChange(e.target.value)} value={this.state.todoInput} placeholder="You text here" />
-                <button onClick={e => this.handleAdd()}>Add</button>
-                <br></br>
+                <button onClick={e => this.handleAdd()}>Add</button>          
+                <br/><br/>
             </div>
         );
     }
